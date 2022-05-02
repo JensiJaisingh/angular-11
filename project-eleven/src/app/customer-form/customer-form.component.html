@@ -1,0 +1,65 @@
+
+<div class="panel-heading">Customer Form</div>
+<form name="customerForm" #customerFormGroup="ngForm" (submit)="saveCustomer(customerFormGroup)">
+    <div class="form-group" [class.has-error]="firstNameFormControl.invalid && firstNameFormControl.touched">
+
+        <label for="fName">
+            FirstName:
+        </label>
+        <input placeholder="enter first name" class="form-control" name="fName" [ngModel]="customerModel.firstName"
+            required minlength="3" #firstNameFormControl="ngModel" />
+        <div class="help-block" *ngIf="firstNameFormControl.invalid && firstNameFormControl.touched">
+            <span *ngIf="firstNameFormControl.errors?.required">
+                First Name is required
+            </span>
+            <span *ngIf="firstNameFormControl.errors?.minlength">
+                <mark>first name must >3 chars</mark>
+            </span>
+        </div>
+    </div>
+    <div class="form-group" [class.has-error]="lastNameFormControl.invalid && lastNameFormControl.touched">
+        <label for="lName">
+            Last Name:
+        </label>
+        <input class="form-control" placeholder="enter last name" name="lName" [ngModel]="customerModel.lastName"
+            required minlength="3" #lastNameFormControl="ngModel" />
+        <div class="help-block" *ngIf="lastNameFormControl.invalid && lastNameFormControl.touched">
+            <span *ngIf="lastNameFormControl.errors?.required">
+                <mark>Last Name is required</mark>
+            </span>
+            <span *ngIf="lastNameFormControl.errors?.minlength">
+                last name must >3 chars
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">
+            Email:
+        </label>
+        <input class="form-control" placeholder="enter email" name="email" [ngModel]="customerModel.email"
+            #emailFormControl="ngModel" />
+    </div>
+    <button class="btn btn-primary">submit</button>
+
+
+</form>
+<pre class="bg-info card" style="width: 18rem;">
+    is pristine : {{customerFormGroup.pristine}}
+    is dirty    : {{customerFormGroup.dirty}}
+
+    is valid      : {{customerFormGroup.valid}}
+    is invalid    : {{customerFormGroup.invalid}}
+
+    is untouched  : {{customerFormGroup.untouched}}
+    is touched    : {{customerFormGroup.touched}}
+</pre>
+<pre class="bg-warning card" style="width: 18rem;">
+    is pristine : {{customerFormGroup.pristine}}
+    is dirty    : {{customerFormGroup.dirty}}
+
+    is valid      : {{customerFormGroup.valid}}
+    is invalid    : {{customerFormGroup.invalid}}
+
+    is untouched  : {{customerFormGroup.untouched}}
+    is touched    : {{customerFormGroup.touched}}
+</pre>
